@@ -47,7 +47,6 @@ int	metachar_error(char *ptr)
 	int	i;
 
 	i = 0;
-	printf("met_re\n");
 	while (ptr[i] && ptr[i] != '\0')
 	{
 		while (ptr && (ptr[i] >= 9 && ptr[i] <= 13) && ptr[i] == 32)
@@ -59,15 +58,26 @@ int	metachar_error(char *ptr)
 		{
 			i += 2;
 			if (syntax_error(ptr, &i) == 1)
+			printf("ok");
 				return (1);
 		}
 		else if (ptr[i] && (ptr[i] == '>' || ptr[i] == '<'))
 		{
 			i++;
 			if (syntax_error(ptr, &i) == 1)
+			printf("plp");
 				return (1);
 		}
 		i++;
 	}
 	return (0);
 }
+
+//  command not found !!!
+// syntax error near unexpected token `newline' ???
+//  int	shlash_quote(char *ptr, int *i)
+//  {
+// 	while(ptr && ptr[*i])
+// 	{		
+// 	}
+//  }

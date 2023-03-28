@@ -39,14 +39,14 @@ void heredoc(t_redirect *red, t_pipe *p/* ,  t_data *data */)
 //     tmp = red;
 //     while (tmp)
 //     {
-//         if (ft_strcmp(tmp->flag, ">>") == 0) // tmp->flag == O_APPEND
+//         if (ft_strcmp(tmp->flag, /* ">>" */O_APPEND) == 0) // tmp->flag == O_APPEND
 //         {
 //             if (tmp->f_name == NULL)
 //                 return ;
-//             // red->fd_ap = open(tmp->f_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
-//             // if (red->fd_ap == -1)
-//             //     perror("Can't open file");
-//             // pipe->append_f = 1;
+//             red->fd_ap = open(tmp->f_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
+//             if (red->fd_ap == -1)
+//                 perror("Can't open file");
+//             pipe->append_f = 1;
 //         }
 //         tmp = tmp->next;
 //     }
@@ -59,7 +59,7 @@ void heredoc(t_redirect *red, t_pipe *p/* ,  t_data *data */)
 //     tmp = red;
 //     while (tmp)
 //     {
-//         if (ft_strcmp(tmp->flag, "<") == 0) // tmp->flag == O_RDONLY
+//         if (ft_strcmp(tmp->flag, /* "<" */O_RDONLY) == 0) // tmp->flag == O_RDONLY
 //         {
 //             if (tmp->f_name == NULL)
 //                 return ;
@@ -79,7 +79,7 @@ void heredoc(t_redirect *red, t_pipe *p/* ,  t_data *data */)
 //     tmp = red;
 //     while (tmp)
 //     {
-//         if (ft_strcmp(tmp->flag, ">") == 0) // tmp->flag = O_TRUNC
+//         if (ft_strcmp(tmp->flag,/*  ">" */O_TRUNC) == 0) // tmp->flag = O_TRUNC
 //         {
 //             if (tmp->f_name == NULL)
 //                 return ;

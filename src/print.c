@@ -34,16 +34,16 @@ void printf_pipe(t_pipe *pipe)
 	{
 		printf("⛩  pipe [%d]\n", i++);
 		int i = 0;
-		print_list(pipe_in->red);
-		printf("argv ***********************************\n");
+		// print_list(pipe_in->red);
+		// printf("argv ***********************************\n");
 		while (pipe_in->argv && pipe_in->argv[i])
 		{
-			printf("argv = %s, ", pipe_in->argv[i]);
+			printf("argv[%d] = %s\n, ", i, pipe_in->argv[i]);
 			i++;
 		}
-		printf("\nfd_in %d, ", pipe_in->fd_in);
-		printf("fd_out %d", pipe_in->fd_out);
-		printf("\nargv ***********************************\n");
+		// printf("\nfd_in %d, ", pipe_in->fd_in);
+		// printf("fd_out %d", pipe_in->fd_out);
+		// printf("\nargv ***********************************\n");
 		pipe_in = pipe_in->next;
 	}
 }

@@ -49,7 +49,7 @@ int	redirect_f_name_flag(t_pipe *top, t_redirect **head, int *i)
 	// int		x;
 	int		flag;
 	int		start;
-	// char	*tmp;
+	char	*tmp;
 
 	// x = 1;
 	flag = get_flag(top->content, (*i)++);
@@ -90,7 +90,7 @@ void	redirect_to_quote(t_pipe *top, int *i, char c)
 	{
 		if (top->content[*i] == c)
 		{
-			// int k = *i;
+			int k = *i;
 			(*i)++;
 			top->s = ft_strjoin(top->s, split_quote(top->content, &(*i), c));
 			// printf("top->s: %s\n", top->s);

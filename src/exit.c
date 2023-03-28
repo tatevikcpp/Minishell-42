@@ -29,7 +29,7 @@ int	is_char(char *str)
     return (0);
 }
 
-void	max_int(char *str/* , t_data *data */)
+void	max_int(char *str, t_data *data)
 {
 	if (ft_strcmp(str, "9223372036854775807") > 0)
 	{
@@ -49,7 +49,7 @@ int	neg_to_pos(long double nbr)
 	return (nbr);
 }
 
-int	ft_exit(char **str/* , t_data *data */)
+int	ft_exit(char **str, t_data *data)
 {
 	if (!str[1])
 	{
@@ -58,22 +58,20 @@ int	ft_exit(char **str/* , t_data *data */)
 	}
 	else if (is_digit(str[1]) == 0 && !str[2])
 	{
-		max_int(str[1]/* , data */);
+		max_int(str[1], data);
 		if (str[1][0] != '-' || str[1][0] == '+')
-			printf("exit_status 255");
-			//exit_status = ft_atoi(str[1]) % 256
-		else
-			printf("exit status ?");
-			//exit_status = 256 - neg_to_pos(ft_atoi(str[1]) % 256);
+			exit_status = ft_atoi(str[1]) % 256;
+		else		
+			exit_status = 256 - neg_to_pos(ft_atoi(str[1]) % 256);
 	}
 	else if (str[2])
 	{
 		perror("minishell: ");
-		//exit_status = 1;
+		exit_status = 1;
 		return(0);
 	}
-	max_int(str[1]/* , data */);
-	//exit_status;
+	max_int(str[1], data);
+	exit_status = 255;
 	exit(255);
    
     return (0);

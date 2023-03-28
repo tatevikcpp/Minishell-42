@@ -136,11 +136,6 @@ char *hendl_doloar_comand(t_data *data, char *test)
         if (test[j] && !(test[j] == '\'' && is_in_single) && !(test[j] == '"' && is_in_double))// else?
             j++;
 	}
-    if (is_in_single || is_in_double)
-    {
-        ft_printf(2, "minishell: syntax error near unexpected token `%c'\n", '"');// '\'', UXXEL, huysy dnel kisvelu vtra
-        return ((char *)0);
-    }
     return (str_line);
 }
 
