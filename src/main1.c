@@ -2,6 +2,32 @@
 
 int exit_status;
 
+void execute(t_data *data, t_pipe *pipe)
+{
+	if (data->pipe_count > 1)
+	{
+		heredoc(pipe->red, pipe);
+		pipe_exec(data, data->pipe->red);
+	}
+	else if (data->pipe_count == 1)
+	{
+		if (there_is_builtin(data) == 1)
+		{
+			printf("welcome to built-ins\n");
+			choose_builtin(data->pipe, data);
+		}
+		else
+		{
+			// heredoc(pipe->red, pipe);			
+			// infile(data.pipe->red, data.pipe);
+			// outfile(data.pipe->red, data.pipe);
+			// append_red(data.pipe->red, data.pipe);
+			pipe_exec(data, data->pipe->red);
+		}			
+	}
+
+}
+
 int there_is_builtin(t_data *data)
 {
 	int i;
@@ -10,8 +36,12 @@ int there_is_builtin(t_data *data)
 	char *build_in[] = {"cd", "echo", "pwd", "exit", "env", "unset", "export", NULL};
 	while (build_in[i])
 	{
+		
 		if (ft_strcmp(data->pipe->argv[0], build_in[i]) == 0)
+		{
 			return (1);
+		}
+			
 		i++;
 	}
 	return (0);
@@ -45,8 +75,6 @@ int main(int ac,  char **av,  char **env)
 			continue ;
 		add_history(ptr);
 		// function(&data, ptr);
-		// if (check_errors(ptr) != 0)
-		// 	continue ;
 		if (parsing(&data, ptr) != 0)
 			continue ;
 		// TODO check cmd existence

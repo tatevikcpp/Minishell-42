@@ -73,3 +73,12 @@ int	metachar_error(char *ptr)
 	}
 	return (0);
 }
+
+//  command not found !!!
+// syntax error near unexpected token `newline' ???
+//  int	shlash_quote(char *ptr, int *i)
+//  {
+// 	while(ptr && ptr[*i])
+// 	{		
+// 	}
+//  }

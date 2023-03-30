@@ -49,7 +49,7 @@ int	redirect_f_name_flag(t_pipe *top, t_redirect **head, int *i)
 	// int		x;
 	int		flag;
 	int		start;
-	// char	*tmp;
+	char	*tmp;
 
 	// x = 1;
 	flag = get_flag(top->content, (*i)++);

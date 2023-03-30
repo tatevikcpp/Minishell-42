@@ -28,6 +28,9 @@ typedef struct s_redirect
 	int					flag;  // O_APPEND || O_TRUNC || O_RDONLY || HEREDOC
 	char				*f_name;
 	int					heredoc_fd;
+	int	 				fd_in;
+	int					fd_out;
+	int	 				fd_ap;
 	struct s_redirect	*next;
 }	t_redirect;
 
@@ -163,6 +166,9 @@ void		execute(t_data *data);
 void		pipe_exec(t_data *data);
 void		pipe_in_out(int i, t_data *data, int count, t_pipe *pipe);
 int			lsh_launch(t_data *data, t_pipe *pipe);
+void pipe_exec_error_or_create(t_data *data);
+void pipe_close_and_wait_parent(t_data *data);
+
 /* -------------------- */
 
 /* -------  Redirections ------- */ /* --- redirections.c --- */
@@ -177,8 +183,6 @@ void		choose_redirect(t_pipe *pipe, t_redirect *red);
 /* ----------- syntax errors -------------- */
 int			syntax_error(char *ptr, int i);
 int			metachar_error(char *ptr);
-int			check_errors(char *ptr);
-int			pipe_error(char *ptr);
 /* ---------------------------------------- */
 /* ------------------------------------------------------------------------------------ */
 
@@ -189,11 +193,14 @@ int			ther_are_equal(char *ptr);
 
 /* ------ export ------------ */ /* builtin_export.c */
 void		builtin_export(t_data *data, t_pipe *pipe);
+// void export_check(t_data *data, t_pipe *pipe, char ** str1, int *i);
+void buildin_export_line( t_pipe *pipe, int *i, char **str1);
 /* ----- export utils ------ */
 char		*hendl_export_var(char *str1);
-void		buildin_export_all(t_data *data/* , char *ptr */);
-void		buildin_export_all_by_alphabet(t_data *data);
-void		buildin_export_all_by_alphabet_inner(t_data *data);
+// void		buildin_export_all(t_data *data/* , char *ptr */);
+void 		buildin_export_all(t_data *data, t_pipe *pipe);
+void		buildin_export_all_by_alphabet(t_data *data,  t_pipe *pipe);
+void		buildin_export_all_by_alphabet_inner(t_data *data,   t_pipe *pipe);
 /* ------------------------- */
 /* -------------------------------------------------- */
 
@@ -209,11 +216,11 @@ int			ft_cd(char **argv, t_data *data);
 /* ------------------------------------- */
 
 /* ---------- exit ----------- */ /* exit.c */
-int			ft_exit(char **str/* , t_data *data */);
+int			ft_exit(char **str, t_data *data);
 /* ----- exit utils ----- */
 int			is_digit(char *str);
 int			is_char(char *str);
-void		max_int(char *str/* , t_data *data */);
+void		max_int(char *str, t_data *data);
 int			neg_to_pos(long double nbr);
 /* ---------------------- */
 /* ---------------------------------------- */
@@ -223,7 +230,7 @@ int			ft_pwd(void);
 /* ---------------------------- */
 
 /* --------- env ----------------------------------- */ 
-void		buildin_env_all(t_data *data); /* builtin_export.c */
+void		buildin_env_all(t_data *data, t_pipe *pipe); /* builtin_export.c */
 void		send_env(t_data *data); /* redirect.c */
 /* ------------------------------------------------- */
 
