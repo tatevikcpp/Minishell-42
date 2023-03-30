@@ -43,7 +43,7 @@ void builtin_export(t_data *data, t_pipe *pipe)
         // head = pipe->head_env;
         if (ft_strcmp(hendl_export_var(str1[0]), "not a valid identifier") == 0)
         {
-            printf(" %s not a valid identifier\n", pipe->argv[i]);
+            printf("minishell: %s: `%s': not a valid identifier\n", pipe->argv[0] , pipe->argv[i]);
             return ;
         }  
         buildin_export_line( pipe, &i, str1);

@@ -35,17 +35,17 @@ void ft_list_remove_if(t_data *data,int (*ft_strcmp)(),t_pipe *pipe)
         str1 = ft_split(pipe->argv[i], '=');
         if (str1[0][0] == '$')
         {
-            printf("pipe->argv[i]---%s\n",pipe->argv[i]);
-            printf("str1[0]%s\n", str1[0]);
-            printf("str1[1]%s\n", str1[1]);
-            printf("HI\n");
+            // printf("pipe->argv[i]---%s\n",pipe->argv[i]);
+            // printf("str1[0]%s\n", str1[0]);
+            // printf("str1[1]%s\n", str1[1]);
+            // printf("HI\n");
             ft_get_remove_val(data,ft_strcmp,str1[0]);            
         }
         else
         {
-            printf("pipe->argv[i]---%s\n",pipe->argv[i]);
-            printf("str1[0]%s\n", str1[0]);
-            printf("str1[1]%s\n", str1[1]);
+            // printf("pipe->argv[i]---%s\n",pipe->argv[i]);
+            // printf("str1[0]%s\n", str1[0]);
+            // printf("str1[1]%s\n", str1[1]);
             remove_else_inner(data, ft_strcmp, str1);       
         }
         i++;
